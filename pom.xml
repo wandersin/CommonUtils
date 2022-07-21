@@ -9,7 +9,7 @@
     <version>${vip.mrtree.version}</version>
 
     <properties>
-        <vip.mrtree.version>v0.0.3</vip.mrtree.version>
+        <vip.mrtree.version>v0.0.4-SNAPSHOT</vip.mrtree.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -17,6 +17,8 @@
         <mockito-core>4.6.1</mockito-core>
         <lombok.version>1.18.24</lombok.version>
         <commons-text.version>1.9</commons-text.version>
+        <commons-codec.version>1.15</commons-codec.version>
+        <fastjson.version>2.0.9</fastjson.version>
     </properties>
 
     <dependencies>
@@ -46,6 +48,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-text</artifactId>
             <version>${commons-text.version}</version>
+        </dependency>
+        <!-- commons-codec -->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+        <!-- fastjson -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${fastjson.version}</version>
         </dependency>
     </dependencies>
 
