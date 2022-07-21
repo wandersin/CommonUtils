@@ -6,23 +6,46 @@
 
     <groupId>vip.mrtree</groupId>
     <artifactId>common-utils</artifactId>
-<!--    <version>v0.0.2-SNAPSHOT</version>-->
-    <version>v0.0.2</version>
+    <version>${vip.mrtree.version}</version>
 
     <properties>
+        <vip.mrtree.version>v0.0.3</vip.mrtree.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <junit.version>4.13.2</junit.version>
+        <mockito-core>4.6.1</mockito-core>
         <lombok.version>1.18.24</lombok.version>
+        <commons-text.version>1.9</commons-text.version>
     </properties>
 
     <dependencies>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>${junit.version}</version>
+        </dependency>
+        <!-- mockito-core -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito-core}</version>
+            <scope>test</scope>
+        </dependency>
         <!-- lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>${lombok.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <!-- commons-text -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-text</artifactId>
+            <version>${commons-text.version}</version>
         </dependency>
     </dependencies>
 
