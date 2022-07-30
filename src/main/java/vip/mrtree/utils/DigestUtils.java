@@ -1,5 +1,8 @@
 package vip.mrtree.utils;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
@@ -12,6 +15,20 @@ public class DigestUtils {
      */
     public static String base64(String str) {
         return Base64.getEncoder().encodeToString(str.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /**
+     * 计算文件md5
+     * <br>
+     *
+     * @author wangyunshu
+     */
+    public static String md5(File file) {
+        try(FileInputStream in = new FileInputStream(file)) {
+            return org.apache.commons.codec.digest.DigestUtils.md5Hex(in);
+        } catch (IOException e) {
+            return "";
+        }
     }
 
     /**

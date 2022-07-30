@@ -8,24 +8,59 @@ public class DateUtils {
     private static final String DEFAULT_DATEFORMAT = "yyyy/MM/dd HH:mm:ss";
 
     /**
-     * 获取标准格式日期
+     * 获取标准格式日期字符串
      * <br>
      * like 2022/04/15 14:29:30
      * @author wangyunshu
      */
-    public static String getDate() {
-        return getDate(DateUtils.DEFAULT_DATEFORMAT);
+    public static String getDateStr() {
+        return getDateStr(System.currentTimeMillis());
     }
 
     /**
-     * 获取指定格式的日期
+     * 获取指定格式的日期字符串
      * <br>
      *
+     * @param fmt 格式
      * @author wangyunshu
      */
-    public static String getDate(String fmt) {
+    public static String getDateStr(String fmt) {
+        return getDateStr(System.currentTimeMillis(), fmt);
+    }
+
+    /**
+     * 获取指定格式的日期字符串
+     * <br>
+     *
+     * @param time 毫秒数
+     * @author wangyunshu
+     */
+    public static String getDateStr(long time) {
+        return getDateStr(time, DateUtils.DEFAULT_DATEFORMAT);
+    }
+
+    /**
+     * 获取指定格式的日期字符串
+     * <br>
+     *
+     * @param time 毫秒数
+     * @param fmt 格式
+     * @author wangyunshu
+     */
+    public static String getDateStr(long time, String fmt) {
         DateFormat format = new SimpleDateFormat(fmt);
-        return format.format(new Date());
+        return format.format(new Date(time));
+    }
+
+    /**
+     * 获取指定日期
+     * <br>
+     *
+     * @param time 毫秒数
+     * @author wangyunshu
+     */
+    public static Date getDate(long time) {
+        return new Date(time);
     }
 
     /**
@@ -36,5 +71,13 @@ public class DateUtils {
      */
     public static String getTimestamp() {
         return String.valueOf(System.currentTimeMillis());
+    }
+
+    public static String format(Date date) {
+        return format(date, new SimpleDateFormat(DEFAULT_DATEFORMAT));
+    }
+
+    public static String format(Date date, DateFormat fmt) {
+        return fmt.format(date);
     }
 }

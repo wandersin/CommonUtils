@@ -47,4 +47,17 @@ public class FileUtils {
         }
         return builder.toString();
     }
+
+    /**
+     * 获取文件扩展名
+     * <br>
+     *
+     * @return 扩展名
+     * @author wangyunshu
+     */
+    public static String getFileExtension(File file) {
+        String name = file.getName();
+        int index = name.lastIndexOf(".");
+        return index < 0 ? "" : name.substring(index + 1);
+    }
 }
