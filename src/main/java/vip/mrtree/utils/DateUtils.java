@@ -77,6 +77,14 @@ public class DateUtils {
         return format(date, new SimpleDateFormat(DEFAULT_DATEFORMAT));
     }
 
+    public static String format(String fmt) {
+        return format(new Date(), new SimpleDateFormat(fmt));
+    }
+
+    public static String format(Date date, String fmt) {
+        return format(date, new SimpleDateFormat(fmt));
+    }
+
     public static String format(Date date, DateFormat fmt) {
         return fmt.format(date);
     }
