@@ -60,4 +60,22 @@ public class FileUtils {
         int index = name.lastIndexOf(".");
         return index < 0 ? "" : name.substring(index + 1);
     }
+
+    /**
+     * 去除windows中文件名不允许的字符
+     * <br>
+     *
+     * @author wangyunshu
+     */
+    public static String getWindowsCleanFileName(String name) {
+        return name.replace("\\", "")
+            .replace("/", "")
+            .replace(":", "")
+            .replace("*", "")
+            .replace("?", "")
+            .replace("\"", "")
+            .replace("<", "")
+            .replace(">", "")
+            .replace("|", "");
+    }
 }

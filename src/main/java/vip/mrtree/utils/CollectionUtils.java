@@ -1,7 +1,6 @@
 package vip.mrtree.utils;
 
 import java.util.Collection;
-import java.util.List;
 
 public class CollectionUtils {
     /**
@@ -30,16 +29,16 @@ public class CollectionUtils {
      *
      * @author wangyunshu
      */
-    public static <T> String join(List<T> list, String symbol) {
+    public static <T> String join(Collection<T> list, String _symbol) {
         if (isEmpty(list)) {
             return "";
         }
-        String temp = symbol == null ? "" : symbol;
-        StringBuilder builder = new StringBuilder(String.valueOf(list.get(0)));
-        for (int i = 1; i < list.size(); i++) {
-            builder.append(temp);
-            builder.append(list.get(i));
-        }
-        return builder.toString();
+        String symbol = _symbol == null ? "" : _symbol;
+        StringBuilder builder = new StringBuilder();
+        list.forEach(item -> {
+            builder.append(symbol);
+            builder.append(item);
+        });
+        return builder.substring(symbol.length());
     }
 }
