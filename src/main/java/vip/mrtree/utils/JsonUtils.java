@@ -2,6 +2,7 @@ package vip.mrtree.utils;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class JsonUtils {
     /**
@@ -10,10 +11,10 @@ public class JsonUtils {
      *
      * @author wangyunshu
      */
-    public static String toJsonString(Object obj) {
+    public static String toJsonString(Object obj, SerializerFeature... features) {
         String result;
         try {
-            result = JSONObject.toJSONString(obj);
+            result = JSONObject.toJSONString(obj, features);
         } catch (Exception e) {
             result = "解析对象格式失败";
         }
