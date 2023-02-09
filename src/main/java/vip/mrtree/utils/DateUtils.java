@@ -1,6 +1,7 @@
 package vip.mrtree.utils;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -87,5 +88,18 @@ public class DateUtils {
 
     public static String format(Date date, DateFormat fmt) {
         return fmt.format(date);
+    }
+
+    public static long calculate(String start, String end, String format) {
+        DateFormat fmt = new SimpleDateFormat(format);
+        try {
+            return calculate(fmt.parse(start), fmt.parse(end));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static long calculate(Date start, Date end) {
+        return end.getTime() - start.getTime();
     }
 }
