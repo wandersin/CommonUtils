@@ -71,4 +71,18 @@ public class StringUtils {
         }
         return builder.toString();
     }
+
+    public static String min(String str1, String str2) {
+        if (StringUtils.isEmpty(str1) || StringUtils.isEmpty(str2)) {
+            return "";
+        }
+        return str1.compareTo(str2) > 0 ? str2 : str1;
+    }
+
+    public static String max(String str1, String str2) {
+        if (StringUtils.isEmpty(str1) || StringUtils.isEmpty(str2)) {
+            return "";
+        }
+        return str1.compareTo(str2) > 0 ? str1 : str2;
+    }
 }
