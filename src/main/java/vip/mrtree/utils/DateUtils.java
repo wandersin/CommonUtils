@@ -90,6 +90,18 @@ public class DateUtils {
         return fmt.format(date);
     }
 
+    public static Date parse(String dateStr) {
+        return parse(dateStr, DEFAULT_DATEFORMAT);
+    }
+
+    public static Date parse(String dateStr, String fmt) {
+        try {
+            return new SimpleDateFormat(fmt).parse(dateStr);
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public static long calculate(String start, String end, String format) {
         DateFormat fmt = new SimpleDateFormat(format);
         try {
