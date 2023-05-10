@@ -9,14 +9,14 @@
     <version>${vip.mrtree.version}</version>
 
     <properties>
-        <vip.mrtree.version>v1.1.0</vip.mrtree.version>
+        <vip.mrtree.version>v1.1.1</vip.mrtree.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.13.2</junit.version>
         <mockito-core>4.6.1</mockito-core>
         <lombok.version>1.18.24</lombok.version>
-        <commons-text.version>1.9</commons-text.version>
+        <commons-text.version>1.10.0</commons-text.version>
         <commons-codec.version>1.15</commons-codec.version>
         <fastjson.version>2.0.9</fastjson.version>
     </properties>
