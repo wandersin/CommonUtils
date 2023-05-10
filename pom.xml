@@ -9,7 +9,7 @@
     <version>${vip.mrtree.version}</version>
 
     <properties>
-        <vip.mrtree.version>v1.1.1</vip.mrtree.version>
+        <vip.mrtree.version>v1.1.1-SNAPSHOT</vip.mrtree.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
