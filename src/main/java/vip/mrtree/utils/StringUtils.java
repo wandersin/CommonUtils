@@ -85,4 +85,8 @@ public class StringUtils {
         }
         return str1.compareTo(str2) > 0 ? str1 : str2;
     }
+
+    public static String trim(String str) {
+        return isEmpty(str) ? "" : str.trim();
+    }
 }
