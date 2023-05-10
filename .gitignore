@@ -1,4 +1,4 @@
 target
 *.iml
 .idea
-src/main/test
+src/test
