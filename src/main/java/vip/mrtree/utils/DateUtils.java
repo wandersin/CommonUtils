@@ -3,6 +3,7 @@ package vip.mrtree.utils;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 public class DateUtils {
@@ -112,6 +113,16 @@ public class DateUtils {
     }
 
     public static long calculate(Date start, Date end) {
+        while (start.compareTo(end) > 0) { // start早于end, 就将end + 1天, 以实现跨天计算
+            end = plusDay(end, 1);
+        }
         return end.getTime() - start.getTime();
+    }
+
+    public static Date plusDay(Date date, int day) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        calendar.add(Calendar.DATE, day);
+        return calendar.getTime();
     }
 }
