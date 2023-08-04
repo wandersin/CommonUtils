@@ -56,6 +56,14 @@ public class UrlComponentBuilder {
         return this;
     }
 
+    public UrlComponentBuilder parameter(Map<String, String> map) {
+        if (MapUtils.isEmpty(map)) {
+            return this;
+        }
+        this.parameter.putAll(map);
+        return this;
+    }
+
     public UrlComponentBuilder parameter(String key, String value) {
         if (StringUtils.isEmpty(key)) {
             return this;
