@@ -13,7 +13,7 @@ public class StringUtils {
      * @author wangyunshu
      */
     public static boolean isEmpty(CharSequence cs) {
-        return cs == null || cs.length() == 0;
+        return cs == null || cs.isEmpty();
     }
 
     /**
