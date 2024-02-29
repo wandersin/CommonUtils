@@ -25,10 +25,12 @@ public class FileSystemUtils {
         }
         List<PathMatcher> includeMatcher = include.stream()
             .filter(StringUtils::isNotEmpty)
-            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern)).toList();
+            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern))
+            .toList();
         List<PathMatcher> excludeMatcher = exclude.stream()
             .filter(StringUtils::isNotEmpty)
-            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern)).toList();
+            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern))
+            .toList();
         try {
             Files.walkFileTree(path, new SimpleFileVisitor<>() {
                 @Override
