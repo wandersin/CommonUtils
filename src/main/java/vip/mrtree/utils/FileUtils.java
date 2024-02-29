@@ -3,7 +3,12 @@ package vip.mrtree.utils;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.PathMatcher;
+import java.util.Collection;
+import java.util.List;
 
 public class FileUtils {
     private static final int DEFAULT_FILE_READ_LENGTH = 1024;
@@ -77,5 +82,49 @@ public class FileUtils {
             .replace("<", "")
             .replace(">", "")
             .replace("|", "");
+    }
+
+    /**
+     * 判断路径是否在白名单内
+     * <br>
+     *
+     * @author wangyunshu
+     */
+    public static boolean include(Path path, Collection<String> include) {
+        List<PathMatcher> includeMatcher = include.stream()
+            .filter(StringUtils::isNotEmpty)
+            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern))
+            .toList();
+        if (CollectionUtils.isEmpty(includeMatcher)) {
+            return Boolean.TRUE;
+        }
+        return includeMatcher.stream().anyMatch(matcher -> matcher.matches(path));
+    }
+
+    /**
+     * 判断路径是否在黑名单内
+     * <br>
+     *
+     * @author wangyunshu
+     */
+    public static boolean exclude(Path path, Collection<String> exclude) {
+        List<PathMatcher> excludeMatcher = exclude.stream()
+            .filter(StringUtils::isNotEmpty)
+            .map(pattern -> FileSystems.getDefault().getPathMatcher(pattern))
+            .toList();
+        if (CollectionUtils.isEmpty(excludeMatcher)) {
+            return Boolean.FALSE;
+        }
+        return excludeMatcher.stream().anyMatch(matcher -> matcher.matches(path));
+    }
+
+    /**
+     * 判断文件是否符合黑白名单要求
+     * <br>
+     *
+     * @author wangyunshu
+     */
+    public static boolean filter(Path path, Collection<String> include, Collection<String> exclude) {
+        return include(path, include) && !exclude(path, exclude);
     }
 }
