@@ -15,6 +15,8 @@ public class FileSystemUtils {
      * @param root 需要遍历的根路径
      * @param include 路径白名单的glob表达式
      * @param exclude 路径黑名单的glob表达式
+     * @param walkDir 是否将文件夹加入扫描结果
+     * @param walkFile 是否将文件加入扫描结果
      * @author wangyunshu
      */
     public static Collection<Path> walkFileTree(String root, Collection<String> include, Collection<String> exclude, boolean walkDir, boolean walkFile) {
@@ -89,6 +91,10 @@ public class FileSystemUtils {
 
     public static Collection<Path> walkFileTree(String root) {
         return walkFileTree(root, Collections.emptySet(), Collections.emptySet(), false, true);
+    }
+
+    public static Collection<Path> walkFileTree(String root, Collection<String> include, Collection<String> exclude) {
+        return walkFileTree(root, include, exclude, false, true);
     }
 
     public static Collection<Path> walkFileTree(Collection<String> root, Collection<String> include, Collection<String> exclude) {
