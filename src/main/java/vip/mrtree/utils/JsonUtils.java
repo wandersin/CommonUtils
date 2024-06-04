@@ -22,6 +22,6 @@ public class JsonUtils {
     }
 
     public static boolean isEmpty(JSONArray array) {
-        return array == null || array.size() == 0;
+        return array == null || array.isEmpty();
     }
 }
