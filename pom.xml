@@ -6,7 +6,7 @@
 
     <groupId>vip.mrtree</groupId>
     <artifactId>common-utils</artifactId>
-    <version>v1.1.7</version>
+    <version>v1.1.8</version>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -64,12 +64,12 @@
 
     <distributionManagement>
         <repository>
-            <id>releases</id>
-            <url>http://192.168.3.2:8082/artifactory/default-maven/</url>
+            <id>local-release</id>
+            <url>https://packages.aliyun.com/5f3658dcd24814603933a475/maven/local-release</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
-            <url>http://192.168.3.2:8082/artifactory/default-maven-snapshot/</url>
+            <id>local-snapshot</id>
+            <url>https://packages.aliyun.com/5f3658dcd24814603933a475/maven/local-snapshot</url>
         </snapshotRepository>
     </distributionManagement>
 
