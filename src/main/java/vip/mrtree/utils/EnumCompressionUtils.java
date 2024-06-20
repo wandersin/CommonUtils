@@ -4,6 +4,7 @@ import vip.mrtree.component.EnumCompressionService;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 
 /**
  * 枚举类型压缩存储工具类
@@ -21,12 +22,19 @@ public class EnumCompressionUtils {
     /**
      * 将特性列表转为存储需要的int值
      * <br>
-     *
+     * 支持定义一个value为负数的特殊元素
+     * 比如: 可以在enum中定一个一个value为-1的EMPYT, NULL, ALL...等需要特殊处理的元素
+     * 当list中包含该特殊元素时, 返回结果为负数(该特殊元素的value)
+     * 注: 原则上每个enum只支持一个value为负数的特殊元素
      * @author wangyunshu
      */
     public static int enum2int(Collection<? extends EnumCompressionService> list) {
         int result = 0;
         for (EnumCompressionService item : list) {
+            if (item.getValue() < 0) {
+                // 特殊值
+                return item.getValue();
+            }
             result += item.getValue();
         }
         return result;
@@ -35,12 +43,23 @@ public class EnumCompressionUtils {
     /**
      * 将存储的int值转换为特性列表
      * <br>
-     *
+     * 支持定义一个value为负数的特殊元素
+     * 比如: 可以在enum中定一个一个value为-1的EMPYT, NULL, ALL...等需要特殊处理的元素
+     * 当入参为负时, 检查是否为特殊元素, 如果是, 则结果只返回特殊元素; 如果不是, 则返回空列表
      * @author wangyunshu
      */
     public static <T extends EnumCompressionService> Collection<T> int2enum(int value, Class<T> clazz) {
-        Collection<T> result = new ArrayList<>();
         T[] array = clazz.getEnumConstants();
+        if (value < 0) {
+            // 特殊元素处理
+            for (T t : array) {
+                if (t.getValue() == value) {
+                    return Collections.singleton(t);
+                }
+            }
+            return Collections.emptyList();
+        }
+        Collection<T> result = new ArrayList<>();
         for (T t : array) {
             if ((value & t.getValue()) == t.getValue()) {
                 result.add(t);
